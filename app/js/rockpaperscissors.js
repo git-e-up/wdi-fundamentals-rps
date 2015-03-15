@@ -25,22 +25,19 @@ function getPlayerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-    return var move 
-    move = move || getInput();
+    return move || getInput();
 }
 
 function getComputerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-    return var move 
-    move = move || randomPlay();
+    return move || randomPlay();
 }
 
 function getWinner(playerMove,computerMove) {
     var winner;
-    var playerMove;
-    var computerMove;
+
     
     if (playerMove == "rock"){
         if (computerMove == "rock"){
@@ -83,8 +80,29 @@ function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
-    // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
+
+    while(playerWins<5 || computerWins<5) {
+        var playerMove = getPlayerMove();
+        var computerMove = getComputerMove();
+        var winner = getWinner(playerMove, computerMove); {
+        	if (winner == 'player') {
+        	playerWins += 1;
+        } 	else if (winner == 'computer') {
+        	computerWins +=1;
+        }
+        
+    console.log("Player chose " + playerMove + " and computer chose " + computerMove);
+    console.log("The score is currently " + playerWins + " to " + computerWins + "\n");
+        if(playerWins==5) {
+            console.log("Player wins it all!");
+            playToFive();
+        } else if (computerWins==5) {
+            console.log("Computer wins it all!");
+            playToFive();
+        }
+
+    }
+	}
     return [playerWins, computerWins];
 }
-
+playToFive()
